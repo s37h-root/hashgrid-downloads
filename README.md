@@ -17,9 +17,11 @@ app monitor and control your miners from anywhere.
 | **Windows** (tray app, Windows 10/11 64-bit) | [HashGrid-Bridge-Windows.zip](https://github.com/s37h-root/hashgrid-downloads/releases/latest/download/HashGrid-Bridge-Windows.zip) |
 | **Umbrel** | Install from the Umbrel app store — see below |
 
-Those two links always resolve to the newest release. Every version is also kept
-under [Releases](https://github.com/s37h-root/hashgrid-downloads/releases) with
-the version in the filename.
+Those two links always resolve to the newest release — the filenames never
+change, so they are safe to link to permanently. Older versions stay available
+under [Releases](https://github.com/s37h-root/hashgrid-downloads/releases); the
+version is in the release title, and the app reports its own version once
+installed.
 
 ---
 
@@ -61,14 +63,17 @@ Umbrel pulls the Docker image itself.
 
 ## Verifying a download
 
-Every release includes `SHA256SUMS.txt`. To check a file:
+Each platform ships a checksum file alongside its binary —
+`SHA256SUMS-macos.txt` and `SHA256SUMS-windows.txt`. Download the one matching
+your platform into the same folder as the binary, then:
 
 ```bash
-shasum -a 256 -c SHA256SUMS.txt --ignore-missing    # macOS / Linux
+shasum -a 256 -c SHA256SUMS-macos.txt        # macOS
 ```
 
 ```powershell
-Get-FileHash .\HashGrid-Bridge-Windows.zip -Algorithm SHA256    # Windows
+# Windows — compare this against the hash in SHA256SUMS-windows.txt
+Get-FileHash .\HashGrid-Bridge-Windows.zip -Algorithm SHA256
 ```
 
 ---
